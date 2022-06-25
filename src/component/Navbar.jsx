@@ -12,7 +12,7 @@ function Navbar(props) {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
               <li class="nav-item">
                 <NavLink class="nav-link active" to="/">
                   Home

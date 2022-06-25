@@ -3,13 +3,13 @@ import Navbar from "./component/Navbar";
 import Home from "./pages/Home";
 import Albums from "./pages/Albums";
 import Songs from "./pages/Songs";
-import Axios from "axios";
-import { useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
 function App() {
   const [data, setData] = useState("");
 
   const storageData = (song) => {
-    Axios.post(`http://localhost:5000/songs`, song)
+    axios.post(`http://localhost:5000/api/song/create`, song)
       .then((response) => {
         setData(response);
         alert("data berhasil");

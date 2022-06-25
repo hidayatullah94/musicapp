@@ -7,13 +7,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import SongsContextProvider from "./context/SOngsContext";
+// import SongsContextProvider from "./context/SOngsContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <SongsContextProvider>
     <React.StrictMode>
-      <App />
+        <App />
     </React.StrictMode>
-  </SongsContextProvider>
 );
