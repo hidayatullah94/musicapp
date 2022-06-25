@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./component/Navbar";
+import Home from "./pages/Home";
+import Albums from "./pages/Albums";
+import Songs from "./pages/Songs";
+import Axios from "axios";
+import { useState } from "react";
 function App() {
+  const [data, setData] = useState("");
+
+  const storageData = (song) => {
+    Axios.post(`http://localhost:5000/songs`, song)
+      .then((response) => {
+        setData(response);
+        alert("data berhasil");
+        console.log("data", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<Home data={data} />} />
+          <Route exact path="/albums" element={<Albums />} />
+          <Route exact path="/songs" element={<Songs Storage={storageData} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
